@@ -1,29 +1,47 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Solution020 {
 
-    public static void main(String[] args) {
-        String test1 = "()";
-        String test2 = "()[]{}";
-        String test3 = "(]";
+    public boolean isValid(String s) {
 
-        Solution020 solution020 = new Solution020();
+        StringBuilder stringBuilder = new StringBuilder(s);
+        List<Character> charList = new ArrayList<>();
+        boolean flagReturn = false;
+        int counter = 0;
+        
+        System.out.println(stringBuilder);
 
-        List<String> testString = new ArrayList<>();
-        testString.addAll(List.of(test1, test2, test3));
-        for (int i = 0; i < testString.size(); i++) {
-            System.out.print("Test number " + i + ": ");
-            System.out.println(solution020.isValid(testString.get(i)));
+        for (int k = 1; k < stringBuilder.length(); k++) {
+
+            char x = stringBuilder.charAt(k - 1);
+            char y = ' ';
+            char z = stringBuilder.charAt(k);
+
+
+            if (x == '(') {
+                y = ')';
+            } else if (x == '{') {
+                y = '}';
+            } else if (x == '[') {
+                y = ']';
+            }
+            
+
+            if (z == y) {
+                counter++;
+                charList.addAll(List.of(stringBuilder.charAt(k - 1), stringBuilder.charAt(k)));
+                stringBuilder.deleteCharAt(k);
+                stringBuilder.deleteCharAt(k - 1);
+                k = 0;
+            }
+    
         }
 
-    }
-
-    public boolean isValid(String s) {
-        boolean flagReturn = true;
-
-        
-
+        if (s.length() / 2 == counter && s.length() % 2 == 0) {
+            flagReturn = true;
+        }
 
         return flagReturn;
     }
