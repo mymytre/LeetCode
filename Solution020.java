@@ -7,7 +7,6 @@ public class Solution020 {
     public boolean isValid(String s) {
 
         StringBuilder stringBuilder = new StringBuilder(s);
-        List<Character> charList = new ArrayList<>();
         boolean flagReturn = false;
         int counter = 0;
         
@@ -31,7 +30,6 @@ public class Solution020 {
 
             if (z == y) {
                 counter++;
-                charList.addAll(List.of(stringBuilder.charAt(k - 1), stringBuilder.charAt(k)));
                 stringBuilder.deleteCharAt(k);
                 stringBuilder.deleteCharAt(k - 1);
                 k = 0;
