@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
+package Algorithms;
 public class Solution020 {
 
     public boolean isValid(String s) {

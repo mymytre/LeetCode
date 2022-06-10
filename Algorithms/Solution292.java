@@ -1,3 +1,4 @@
+package Algorithms;
 public class Solution292 {
     public boolean canWinNim(int n) {
 
