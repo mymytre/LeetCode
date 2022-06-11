@@ -34,8 +34,9 @@ public class Solution021 {
         ListNode node = null;
         ListNode node1 = null;
 
-
         ListNode test = solution021.mergeTwoLists(a, x);
+
+
         while (test != null) {
             System.out.print(test.val + " ");
             test = test.next;
@@ -46,39 +47,30 @@ public class Solution021 {
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
-        ListNode head, end = null;
-        ListNode tmp = new ListNode();
-        head = tmp;
-        int x, y;
+        if(list1 == null) {
+            return list2;
+        } else if (list2 == null) {
+            return list1;
+        }
+
+        ListNode head = new ListNode();
+        ListNode tmp = head;
 
         while (list1 != null && list2 != null) {
-            x = list1.val;
-            y = list2.val;
-
-            if (x >= y) {
-                tmp.val = y;
-                tmp.next = new ListNode();
-                tmp = tmp.next;
-                tmp.val = x;
+            if (list1.val <= list2.val) {
+                tmp.next = list1;
+                list1 = list1.next;
             } else {
-                tmp.val = x;
-                tmp.next = new ListNode();
-                tmp = tmp.next;
-                tmp.val = y;
+                tmp.next = list2;
+                list2 = list2.next;
             }
-            end = tmp;
-
-
-            tmp.next = new ListNode();
             tmp = tmp.next;
-
-            list1 = list1.next;
-            list2 = list2.next;
         }
-        assert end != null;
-        end.next = null;
-
-
-        return head;
+        if(list1 == null) {
+            tmp.next = list2;
+        } else {
+            tmp.next = list1;
+        }
+        return head.next;
     }
 }
