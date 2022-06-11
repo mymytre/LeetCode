@@ -1,6 +1,6 @@
 package Algorithms;
 
-class Solution021 {
+public class Solution021 {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
         if (list1 == null) {
